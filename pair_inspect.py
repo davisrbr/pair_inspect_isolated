@@ -1,7 +1,7 @@
 from inspect_ai import Task, task, Epochs, eval
-from data.data_inspect import jb_behaviors_dataset
-from solvers.solvers_inspect import pair_solver
-from scorers.scorers_inspect import final_scorer
+from data_inspect import jb_behaviors_dataset
+from solvers_inspect import pair_solver
+from scorers_inspect import final_scorer
 
 @task
 def pair_task(
