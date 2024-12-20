@@ -1,9 +1,9 @@
-from inspect_ai import Task, task, Epochs, eval
+from inspect_ai import Task, Epochs, mean, stderr
+
 from data_inspect import jb_behaviors_dataset
 from solvers_inspect import pair_solver
 from scorers_inspect import final_scorer
 
-@task
 def pair_task(
     target_model_name: str = "together/meta-llama/Llama-2-7b-chat-hf", 
     judge_model_name: str = "openai/gpt-4o-mini", 
@@ -32,5 +32,6 @@ def pair_task(
             ),
         ],
         scorer=final_scorer(),
-        epochs=Epochs(epochs)
+        metrics=[mean(), stderr()],
+        epochs=Epochs(epochs, reducer="max")
     )
